@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Watch trailer</title>
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="libs/jquery-3.4.1.min.js"></script>
+
+    <script>
+            $(document).ready(function(){
+                //Load nav
+                $("#nav-container").load("Shared/nav.html");
+            });
+        </script>
+</head>
+<body>
+    <div id=nav-container></div>
+    <h2>Hearthstone Trailer</h2>
+    <iframe id="iframe-trailer" width="840" height="690" src="https://www.youtube.com/embed/HsXglDs81FU">
+        </iframe>
+</body>
+</html>

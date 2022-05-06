@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>About</title>
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="libs/jquery-3.4.1.min.js"></script>
+
+    <script>
+            $(document).ready(function(){
+                //Load nav
+                $("#nav-container").load("Shared/nav.html");
+
+                drawCanvas();
+            });
+
+            function drawCanvas(){
+                var c = document.getElementById("myCanvas");
+                var c2 = $("#myCanvas");
+                console.log(c);
+                console.log(c2);
+                var ctx = c .getContext("2d");
+
+                // Create gradient
+                var grd = ctx.createRadialGradient(75,50,5,90,60,100);
+                grd.addColorStop(0,"red");
+                grd.addColorStop(1,"white");
+
+                // Fill with gradient
+                ctx.fillStyle = grd;
+                ctx.fillRect(10,10,150,80);
+            }
+        </script>
+</head>
+<body>
+    <div id="nav-container"></div>
+    <section>
+        <h2>About this tournament</h2>
+
+        <h3>Bring your best deck and battle with your opponents!</h3>
+        <p>From November 11th till November 12th we will be hosting an international Hearthstone tournament in Apeldoorn, The Netherlands. </br>
+            Everyone over 14 years of age can sign up and the top 3 will win special prices. <br>
+            People from all over Europe will be participating in on of the greatest Hearthstone events in history.</br>
+            The format played will be Wild-format, which means all cards are allowed! <br>            
+        </p>
+
+        <h3>Bring your own device!</h3>
+        <p>Even though we will have plenty of PC's set up, we will also have room for you to set up your own device!<br>
+            Sign up and get a 40% discount for staying at the nearby camping Hertshoorn, which will have an associated Hearthstone theme during this event. </br>
+        </p>
+
+        <img src="img/hearthstone_icon.jpg" id="hearthstone-image">
+
+        <h3>We hope to see you soon!</h3>
+    </section>
+    <footer>
+        <div id="canvas-container">
+            <div>Powered by: HTML5 Canvas</div>
+            <canvas id="myCanvas" width="200" height="100" style="border:1px solid #d3d3d3;">
+                    Your browser does not support the HTML5 canvas tag.
+            </canvas>
+        </div>
+        
+
+            <div id="svg-container">
+                <div>Powered by:</div>
+                <svg height="130" width="200">
+                        <defs>
+                            <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" style="stop-color:green;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:blue;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                        <ellipse cx="100" cy="70" rx="85" ry="55" fill="url(#grad1)" />
+                        <text fill="#ffffff" font-size="45" font-family="Verdana" x="50" y="86">SVG</text>
+                        Sorry, your browser does not support inline SVG.
+                </svg>
+            </div>
+        
+    </footer>
+</body>
+</html>

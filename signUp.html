@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sign Up</title>
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="libs/jquery-3.4.1.min.js"></script>
+
+    <script>
+            $(document).ready(function(){
+                //Load nav
+                $("#nav-container").load("Shared/nav.html");
+            });
+            
+            function validateForm(){ //validateForm() is being called from the HTML Form. Return false to stop the Form Action attribute.
+                
+                if(!validateDateOfBirth()){
+                    return false;
+                }
+            }
+
+            function validateDateOfBirth(){
+                //Returns true if the Date of Birth is greater than or equal to 14.
+                var submittedDate = document.forms["signUpForm"]["DateOfBirth"].value;
+                var date = new Date(submittedDate);
+                var today = new Date();                    
+                var age = getAgeByDate(date);
+                
+                if(age < 14){
+                    showValidationError("You must be over 14 years of age to sign up.");
+                    return false;
+                }
+                else{
+                    return true;
+                }
+            }
+
+            function showValidationError(message){
+                var errorDiv = $("#formValidationError");
+                errorDiv.css("display", "block");
+                errorDiv.html(message);
+            }
+
+            function getAgeByDate(dateOfBirth) {
+                var today = new Date();
+                var age = today.getFullYear() - dateOfBirth.getFullYear();
+                var m = today.getMonth() - dateOfBirth.getMonth();
+                if (m < 0 || (m === 0 && today.getDate() < dateOfBirth.getDate())) {
+                    age--;
+                }
+                return age;
+            }
+            
+    </script>
+</head>
+<body>
+    <div id="nav-container"></div>
+    <section>
+        <h2>Enter the Tournament</h2>
+            <div id="form-container">
+                <form name="signUpForm" action="signUpCompleted.php" method="POST" onsubmit="return validateForm()">
+                    <label>Firstname</label>
+                    <input type="text" name="Firstname" required>
+            
+                    <label>Lastname</label>
+                    <input type="text" name="Lastname" required>
+            
+                    <label>Email</label>
+                    <input type="email" name="Email">
+            
+                    <label>Date of birth</label>
+                    <input type="date" name="DateOfBirth" required>
+            
+                    <input type="submit">
+
+                    <div id="formValidationError"></div>
+                </form>
+            </div>
+    </section>   
+    
+</body>
+</html>
